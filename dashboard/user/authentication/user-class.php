@@ -121,7 +121,7 @@ class USER
             $date_now = date("Y-m-d h:i:s A");
             $user_id = $userRow['id'];
 
-            $stmt = $this->conn->prepare("INSERT INTO logs (user_id, activity) VALUES (:user_id, :activity)");
+            $stmt = $this->conn->prepare("INSERT INTO logs(user_id, activity) VALUES (:user_id, :activity)");
             $stmt->execute(array(":user_id" => $user_id, ":activity" => $activity));
             $_SESSION['user_session'] = $userRow['id'];
             return true;
