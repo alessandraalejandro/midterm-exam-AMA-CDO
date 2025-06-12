@@ -1,24 +1,22 @@
 
 
 <?php
-	try {
+try {
 
     // Check if the server is running on localhost
     if ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1') {
         // Localhost connection
-        $pdoConnect = new PDO("mysql:host=localhost;dbname=magrent", "root", "");
+        $pdoConnect = new PDO("mysql:host=localhost;port=3307;dbname=magrent", "root", ""); // add ;port=3307 for changed ports
+        // $pdoConnect = new PDO("mysql:host=localhost;dbname=magrent", "root", "") // for unchange port (3306)
     } else {
         // Live server connection
         $pdoConnect = new PDO("mysql:host=localhost;dbname=u297724503_magrent_2023", "u297724503_magrent_2023", "Magrent_2023");
     }
-		$pdoConnect->setAttribute(PDO:: ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
-
-	}
-	catch (PDOException $exc){
-		echo $exc -> getMessage();
-	}
-    catch (PDOException $exc){
-        echo $exc -> getMessage();
+    $pdoConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $exc) {
+    echo $exc->getMessage();
+} catch (PDOException $exc) {
+    echo $exc->getMessage();
     exit();
-    }
+}
 ?>

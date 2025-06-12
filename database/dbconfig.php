@@ -5,6 +5,7 @@ class Database
     private $db_name;
     private $username;
     private $password;
+    private $port; // changed port (3307, 3308)
     public $conn;
 
     public function __construct()
@@ -16,6 +17,7 @@ class Database
             $this->db_name = "magrent";
             $this->username = "root";
             $this->password = "";
+            $this->port = "3307"; // add for changed ports (3307, 3308)
         } else {
             // Live server connection
             $this->host = "localhost";
@@ -29,7 +31,8 @@ class Database
     {
         $this->conn = null;
         try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=" . $this->host .  ";port=" .  $this->port . ";dbname=" . $this->db_name, $this->username, $this->password); // add  ";port=" . $this->port . for changed ports (3307, 3308)
+            // $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password); // for 3306 ports
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
@@ -38,4 +41,3 @@ class Database
         return $this->conn;
     }
 }
-?>
