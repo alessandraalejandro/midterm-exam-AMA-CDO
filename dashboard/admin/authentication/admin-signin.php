@@ -11,9 +11,9 @@ if ($user->isUserLoggedIn() != "") {
 
 if (isset($_POST['btn-signin'])) {
 
-   $response = $_POST['g-tokens'];
+   $response = $_POST['g-token']; // change 'g-tokens' to 'g-token' 
    $remoteip = $_SERVER['REMOTE_ADDR'];
-   $url = "https://www.google.com/recaptcha/api/siteverify?secret=$site_secret_key&response=$response&remoteip=$remoteip";
+   $url = "https://www.google.com/recaptcha/api/siteverify?secret=$site_secret_key&response=$response&remoteip=$remoteip"; // change googles.com to google.com
    $data = file_get_contents($url);
    $row =  json_decode($data, true);
 
@@ -28,7 +28,7 @@ if (isset($_POST['btn-signin'])) {
          $_SESSION['status'] = "Welcome back! ";
          $_SESSION['status_code'] = "success";
          $_SESSION['status_timer'] = 10000;
-         header("Location: ../../");
+         header("Location: ../");
          exit;
       }
    } else {
