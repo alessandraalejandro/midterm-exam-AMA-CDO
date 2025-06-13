@@ -67,7 +67,7 @@ class ADMIN
     return $URL;
   }
 
-  public function lasdID()
+  public function lastID() // lasdID to lastID
   {
     $stmt = $this->conn->lastInsertId();
     return $stmt;
@@ -98,14 +98,15 @@ class ADMIN
   public function login($email, $upass)
   {
     try {
-      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email=:email_id AND account_status = :account_status AND user_type = :user_type");
-      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", "user_type" => 1));
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email= :email_id AND account_status = :account_status AND user_type = :user_type");
+      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 1));
       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
       if ($stmt->rowCount() == 1) {
         if ($userRow['status'] == "Y") {
           if ($userRow['password'] == md5($upass)) {
+
             DATE_DEFAULT_TIMEZONE_SET('Asia/Manila');
             $activity = "Has successfully signed in";
             $date_now = date("Y-m-d h:i:s A");

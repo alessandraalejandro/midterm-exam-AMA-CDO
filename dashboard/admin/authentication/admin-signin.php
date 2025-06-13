@@ -1,5 +1,5 @@
 <?php
-// include_once __DIR__ . '/../../../src/api/api.php'; // ano to???? wala naman ganitong folder and file eh
+// include_once __DIR__ . '/../../../src/api/api.php';   // Folder and file not found
 require_once 'admin-class.php';
 
 $user = new ADMIN();
@@ -17,7 +17,7 @@ if (isset($_POST['btn-signin'])) {
    $data = file_get_contents($url);
    $row =  json_decode($data, true);
 
-   if ($row['success'] == "false") {
+   if ($row['success'] == "true") { // change from false to true
 
       $email = trim($_POST['email']);
       $upass = trim($_POST['password']);
@@ -36,7 +36,7 @@ if (isset($_POST['btn-signin'])) {
       $_SESSION['status'] = "Invalid captcha, please try again!";
       $_SESSION['status_code'] = "error";
       $_SESSION['status_timer'] = 40000;
-      header("Location: ../../../../private/admin/");
+      header("Location: ../../../private/admin/");
       exit;
    }
 }

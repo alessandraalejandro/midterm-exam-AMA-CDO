@@ -24,7 +24,7 @@ if (isset($_POST['btn-signin'])) {
 
         $stmt = $user->runQuery('SELECT * FROM users WHERE email = :email');
         $stmt->execute(array(
-            ":email" => $email,
+            ":email" => $email
         ));
 
         $rowCount = $stmt->rowCount();
