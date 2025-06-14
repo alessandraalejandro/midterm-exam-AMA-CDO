@@ -1,2 +1,2 @@
 # CCSFP-MIDTERM
-Pair: Alejandro and Ocampo
+Pair: Alessandra Alejandro and Christian Ocampo
