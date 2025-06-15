@@ -105,11 +105,9 @@ class USER
 
   public function login($email, $hash_password)
   {
-
     try {
-      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email=:email_id AND account_status = :account_status AND user_type = :user_type");
-      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 3)); // user type 3 for standard users
-      // $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 9));
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email=:email_id AND account_status = :account_status AND user_type = :user_type"); // add s to user
+      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 3)); // changed "user_type" => 9 to ":user_type" => 3 for users
       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
@@ -121,7 +119,7 @@ class USER
             $date_now = date("Y-m-d h:i:s A");
             $user_id = $userRow['id'];
 
-            $stmt = $this->conn->prepare("INSERT INTO logs(user_id, activity) VALUES (:user_id, :activity)");
+            $stmt = $this->conn->prepare("INSERT INTO logs (user_id, activity) VALUES (:user_id, :activity)");
             $stmt->execute(array(":user_id" => $user_id, ":activity" => $activity));
             $_SESSION['user_session'] = $userRow['id'];
             return true;
@@ -196,12 +194,12 @@ class USER
     $mail->Host       = "smtp.gmail.com";
     $mail->Port       = 587;
     $mail->AddAddress($email);
-    $mail->Username   = $smtp_email;
-    $mail->Password   = $smtp_password;
+    $mail->Username = $smtp_email;
+    $mail->Password = $smtp_password;
     $mail->SetFrom($smtp_email, $system_name);
     $mail->Subject    = $subject;
     $mail->MsgHTML($message);
-    $imagePath        = __DIR__ . '/../../../src/images/main_logo/logo.png';
+    $imagePath = __DIR__ . '/../../../src/images/main_logo/logo.png';
     $mail->AddEmbeddedImage($imagePath, 'logo', 'logo.png');
     $mail->Send();
   }

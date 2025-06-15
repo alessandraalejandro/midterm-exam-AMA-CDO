@@ -108,8 +108,8 @@ class AGENT
   public function login($email, $hash_password)
   {
     try {
-      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email= :email_id AND account_status = :account_status AND user_type = :user_type");
-      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", "user_type" => 2));
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE email=:email_id AND account_status = :account_status AND user_type = :user_type");
+      $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 2)); // change "user_type" into ":user_type"
       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
 

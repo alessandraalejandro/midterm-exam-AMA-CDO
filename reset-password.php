@@ -1,10 +1,8 @@
 <?php
 require_once 'dashboard/user/authentication/user-class.php';
-
 $user = new USER();
 $config = new SystemConfig();
 $main_url = new MainUrl();
-
 if (empty($_GET['id']) && empty($_GET['code'])) {
     $user->redirect('signin');
 }

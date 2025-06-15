@@ -67,7 +67,7 @@ class ADMIN
     return $URL;
   }
 
-  public function lastID() // lasdID to lastID
+  public function lasdID()
   {
     $stmt = $this->conn->lastInsertId();
     return $stmt;
@@ -101,7 +101,6 @@ class ADMIN
       $stmt = $this->conn->prepare("SELECT * FROM users WHERE email= :email_id AND account_status = :account_status AND user_type = :user_type");
       $stmt->execute(array(":email_id" => $email, ":account_status" => "active", ":user_type" => 1));
       $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
       if ($stmt->rowCount() == 1) {
         if ($userRow['status'] == "Y") {

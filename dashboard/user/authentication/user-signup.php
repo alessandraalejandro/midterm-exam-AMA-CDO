@@ -54,71 +54,71 @@ class UserController
 
                 $subject = "OTP Verification";
                 $message = "
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <meta charset='UTF-8'>
-                        <title>OTP Verification</title>
-                        <style>
-                            body {
-                                font-family: Arial, sans-serif;
-                                background-color: #f5f5f5;
-                                margin: 0;
-                                padding: 0;
-                            }
-                            
-                            .container {
-                                max-width: 600px;
-                                margin: 0 auto;
-                                padding: 30px;
-                                background-color: #ffffff;
-                                border-radius: 4px;
-                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                            }
-                            
-                            h1 {
-                                color: #333333;
-                                font-size: 24px;
-                                margin-bottom: 20px;
-                            }
-                            
-                            p {
-                                color: #666666;
-                                font-size: 16px;
-                                margin-bottom: 10px;
-                            }
-                            
-                            .button {
-                                display: inline-block;
-                                padding: 12px 24px;
-                                background-color: #0088cc;
-                                color: #ffffff;
-                                text-decoration: none;
-                                border-radius: 4px;
-                                font-size: 16px;
-                                margin-top: 20px;
-                            }
-                            
-                            .logo {
-                                display: block;
-                                text-align: center;
-                                margin-bottom: 30px;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <div class='container'>
-                            <div class='logo'>
-                                <img src='cid:logo' alt='Logo' width='150'>
-                            </div>
-                            <h1>OTP Verification</h1>
-                            <p>Hello, $email</p>
-                            <p>Your OTP is: $otp</p>
-                            <p>If you didn't request an OTP, please ignore this email.</p>
-                            <p>Thank you!</p>
-                        </div>
-                    </body>
-                    </html>";
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <meta charset='UTF-8'>
+                <title>OTP Verification</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f5f5f5;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        padding: 30px;
+                        background-color: #ffffff;
+                        border-radius: 4px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    h1 {
+                        color: #333333;
+                        font-size: 24px;
+                        margin-bottom: 20px;
+                    }
+                    
+                    p {
+                        color: #666666;
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                    }
+                    
+                    .button {
+                        display: inline-block;
+                        padding: 12px 24px;
+                        background-color: #0088cc;
+                        color: #ffffff;
+                        text-decoration: none;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        margin-top: 20px;
+                    }
+                    
+                    .logo {
+                        display: block;
+                        text-align: center;
+                        margin-bottom: 30px;
+                    }
+                </style>
+                </head>
+                <body>
+                <div class='container'>
+                    <div class='logo'>
+                        <img src='cid:logo' alt='Logo' width='150'>
+                    </div>
+                    <h1>OTP Verification</h1>
+                    <p>Hello, $email</p>
+                    <p>Your OTP is: $otp</p>
+                    <p>If you didn't request an OTP, please ignore this email.</p>
+                    <p>Thank you!</p>
+                </div>
+                </body>
+                </html>";
 
                 $this->user->send_mail($email, $message, $subject, $this->smtp_email, $this->smtp_password, $this->system_name);
 
@@ -145,8 +145,7 @@ class UserController
             $key = base64_encode($id);
             $id = $key;
 
-            $message =
-                "
+            $message = "
             <!DOCTYPE html>
             <html>
             <head>

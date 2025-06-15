@@ -2,7 +2,7 @@
 include_once 'dashboard/user/authentication/user-signup.php';
 
 if ($_SESSION['OTP'] === NULL) {
-    header('Location: signin.php');
+    header('Location: signin');
     exit;
 }
 
